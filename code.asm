@@ -7,10 +7,10 @@ drawHorizontalLine proc
 ; R8 = opts (2b(length) + 2b(screen_width) + 2b(Y) + 2b(X))
 
 
-; Вариант цикла 1:
+; Р’Р°СЂРёР°РЅС‚ С†РёРєР»Р° 1:
 ;_metka_drawHorizontalLine:
 ;
-;mov [ rcx ], rdx ; чтение из регистра rcx адреса в памяти
+;mov [ rcx ], rdx ; С‡С‚РµРЅРёРµ РёР· СЂРµРіРёСЃС‚СЂР° rcx Р°РґСЂРµСЃР° РІ РїР°РјСЏС‚Рё
 ;add rcx, 4
 ;dec r9
 ;jnz _metka_drawHorizontalLine
@@ -20,22 +20,22 @@ push rdi
 push rax
 push rcx
 
-mov eax, 0DEADBEEFh  ; Уникальное значение
-nop                  ; Для удобства поиска
+mov eax, 0DEADBEEFh  ; РЈРЅРёРєР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
+nop                  ; Р”Р»СЏ СѓРґРѕР±СЃС‚РІР° РїРѕРёСЃРєР°
 
-; формула рассчета оффсета = (width * y + x) * 4 
+; С„РѕСЂРјСѓР»Р° СЂР°СЃСЃС‡РµС‚Р° РѕС„С„СЃРµС‚Р° = (width * y + x) * 4 
 mov rbx, r8
-shr rbx, 32 ; сдвиг до low64
-movzx rbx, bx ; чистим значение выше bx
+shr rbx, 32 ; СЃРґРІРёРі РґРѕ low64
+movzx rbx, bx ; С‡РёСЃС‚РёРј Р·РЅР°С‡РµРЅРёРµ РІС‹С€Рµ bx
 
 mov rax, r8
-shr rax, 16 ; сдвиг до hi32
-movzx rax, ax ; чистим выше ax
+shr rax, 16 ; СЃРґРІРёРі РґРѕ hi32
+movzx rax, ax ; С‡РёСЃС‚РёРј РІС‹С€Рµ ax
 
 imul rbx, rax
 
 mov rax, r8
-movzx rax, ax ; чистим выше ax
+movzx rax, ax ; С‡РёСЃС‚РёРј РІС‹С€Рµ ax
 
 add rbx, rax
 
@@ -45,7 +45,7 @@ mov rdi, rcx
 add rdi, rbx ; add offset to rdi
 mov rax, rdx
 mov rcx, r8
-shr rcx, 48 ; сдвиг до length
+shr rcx, 48 ; СЃРґРІРёРі РґРѕ length
 rep stosd
 
 pop rcx
