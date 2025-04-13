@@ -2,13 +2,14 @@
 #include <stdio.h>
 
 struct POSITION_OPTS {
-    short X;
-    short Y;
-    short ScreenWidth;
-    short Length;
+    unsigned short X;
+    unsigned short Y;
+    unsigned short ScreenWidth;
+    unsigned short Length;
 };
 
-extern "C" void drawHorizontalLine(CHAR_INFO* chiBuffer, CHAR_INFO symbol, POSITION_OPTS position);
+extern "C" void drawHorizontalLine(CHAR_INFO* chiBuffer, CHAR_INFO symbol, POSITION_OPTS pos_opts);
+extern "C" void drawColors(CHAR_INFO* chiBuffer, unsigned short screenWidth);
 
 int main(void)
 {
@@ -75,13 +76,14 @@ int main(void)
     s.Char.UnicodeChar = L'X';
 
     POSITION_OPTS p{};
-    p.X = 10;
+    p.X = 20;
     p.Y = 10;
     //p.ScreenWidth = screenBufferInfo.dwSize.X;
     p.ScreenWidth = visibleWidth;
     p.Length = 10;
 
     drawHorizontalLine(chiBuffer, s, p);
+    drawColors(chiBuffer, visibleWidth);
 
     // Устанавливаем прямоугольник для вывода (только видимая часть)
     srctWriteRect.Top = 0;
