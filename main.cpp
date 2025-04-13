@@ -8,6 +8,7 @@ struct POSITION_OPTS {
     unsigned short Length;
 };
 
+extern "C" void drawVerticalLine(CHAR_INFO* chiBuffer, CHAR_INFO symbol, POSITION_OPTS pos_opts);
 extern "C" void drawHorizontalLine(CHAR_INFO* chiBuffer, CHAR_INFO symbol, POSITION_OPTS pos_opts);
 extern "C" void drawColors(CHAR_INFO* chiBuffer, unsigned short screenWidth);
 
@@ -83,6 +84,7 @@ int main(void)
     p.Length = 10;
 
     drawHorizontalLine(chiBuffer, s, p);
+    drawVerticalLine(chiBuffer, s, p);
     drawColors(chiBuffer, visibleWidth);
 
     // Устанавливаем прямоугольник для вывода (только видимая часть)
