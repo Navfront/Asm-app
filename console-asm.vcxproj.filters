@@ -2,8 +2,35 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp">
+      <Filter>renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="code.asm" />
+    <Filter Include="asm">
+      <UniqueIdentifier>{24d8e147-69db-4fe1-a29f-b7c69963c207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{26f2a200-542c-4771-b90c-d0dddf2a17ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="renderer">
+      <UniqueIdentifier>{98f11eb9-41be-43fa-a3da-f0fe6b4e966d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assembly_code.h">
+      <Filter>asm</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="assembly_code.asm">
+      <Filter>asm</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
